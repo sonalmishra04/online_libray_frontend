@@ -19,7 +19,7 @@ export class BookDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private crudApi: CrudService
   ) {
-    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getId = this.activatedRoute.snapshot.paramMap.get('book');
     this.crudApi.getBook(this.getId).subscribe((res) => {
       this.updateForm.setValue({
         book: res['book'],
@@ -39,6 +39,7 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit(): void {}
   onUpdate() {
+    console.log(this.getId);
     this.crudApi.UpdateBook(this.getId, this.updateForm.value).subscribe({
       complete: () => {
         console.log('Data updated!');

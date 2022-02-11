@@ -34,7 +34,7 @@ export class CrudService {
 
   //get one book
   getBook(id: any): Observable<any> {
-    let API_URL = `${this.REST_API}/category/:${id}`;
+    let API_URL = `${this.REST_API}/category/${id}`;
     return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
       map((res: any) => {
         return res || {};
@@ -45,18 +45,18 @@ export class CrudService {
 
   //Update Book
   UpdateBook(data: any, id: any): Observable<any> {
-    let API_URL = `http://localhost:3000/api/book/:${id}`;
-    return this.httpClient
-      .put(API_URL, data, { headers: this.httpHeaders })
-      .pipe(catchError(this.handleError));
+    let API_URL = `http://localhost:3000/api/book/${id}`;
+    return this.httpClient.put(API_URL, data);
+    //  { headers: this.httpHeaders })
+    // .pipe(catchError(this.handleError));
   }
 
   //Delete Book
   DeleteBook(id: any): Observable<any> {
-    let API_URL = `http://localhost:3000/api/book/:${id}`;
-    return this.httpClient
-      .delete(API_URL, { headers: this.httpHeaders })
-      .pipe(catchError(this.handleError));
+    let API_URL = `http://localhost:3000/api/book/${id}`;
+    return this.httpClient.delete(API_URL);
+    // { headers: this.httpHeaders })
+    // .pipe(catchError(this.handleError));
   }
 
   //Error

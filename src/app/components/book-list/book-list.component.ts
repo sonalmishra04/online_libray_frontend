@@ -19,10 +19,9 @@ export class BookListComponent implements OnInit {
 
   delete(id: any, i: any) {
     console.log(id);
-    if (window.confirm('Are you sure want to delete')) {
-      this.crudApi.DeleteBook(id).subscribe((res) => {
-        this.Books.splice(i, 1);
-      });
-    }
+    // if (window.confirm('Are you sure want to delete')) {
+    this.crudApi.DeleteBook(id).subscribe((data) => {
+      console.log(data);
+    });
   }
 }
